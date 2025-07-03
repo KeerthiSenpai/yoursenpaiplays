@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<!-- Mirrored from senpai.vip/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Jul 2025 06:25:29 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LPXBR0FCVS"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-LPXBR0FCVS');
+    </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YourSenpaiPlays</title>
+
+    <link rel="icon" type="image/png" sizes="32x32" href="zerotwo-noBG.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="zerotwo-noBG.png">
+    <link href="unpkg.com/tailwindcss%402.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+    <script src="cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+    <link href="fonts.googleapis.com.css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            background: #0a0a0a;
+            font-family: "Inter", sans-serif;
+            color: #E0E0E0;
+            transition: background 0.3s ease, color 0.3s ease;
+            overflow-x: hidden;
+        }
+        body.light {
+            background: #f5f5f5;
+            color: #333333;
+        }
+
+        header.light {
+            background-color: #f3f4f6; 
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05); 
+        }
+        .header-text { color: #ffffff; }
+        .header-text.light { color: #000000; } 
+
+
+        .body-text { color: #E0E0E0; }
+        .body-text.light { color: #333333; }
+
+        .newsletter-input {
+            border-color: #4B5563; 
+            background-color: #1F2937; 
+            color: #F3F4F6; 
+        }
+        .newsletter-input.light {
+        /* Make each detail appear in a single line for the settings section */
+        .settings-section-details {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+        .settings-section-details > div {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            gap: 0.5em;
+            white-space: normal;
+            overflow-wrap: anywhere;
+            word-break: break-word;
+        }
+            border-color: #9CA3AF; 
+            background-color: #E5E7EB; 
+            color: #111827; 
+        }
+        .newsletter-input::placeholder { color: #9CA3AF; }
+        .newsletter-input.light::placeholder { color: #6B7280; }
+
+        .hidden { display: none; }
+
+        .gear-card, .senpai-settings-card {
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            padding: 1.5rem; 
+            transition: box-shadow 0.3s ease, background 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            position: relative;
+            will-change: transform, opacity;
+        }
+        .senpai-settings-card { padding: 1.5rem; }
+        .card.light {
+            background: rgba(0, 0, 0, 0.05);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+        .card:hover:not(.no-hover-effect) { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+        .card.light:hover:not(.no-hover-effect) { box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); }
+
+        .gear-card {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 400px;
+            max-width: 100%;
+        }
+        .gear-card img {
+            transition: transform 0.3s ease;
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .gear-card:hover img { transform: scale(1.05); }
+        .gear-card-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            margin-top: 0.5rem;
+            flex-grow: 1;
+            justify-content: space-between;
+        }
+        .gear-card-content h3 {
+            flex-grow: 1;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+        .buy-btn {
+            background: linear-gradient(to right, #00f7ff, #3b82f6);
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 8px;
+            transition: background 0.3s ease, transform 0.2s ease;
+            width: fit-content;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .buy-btn:hover {
+            background: linear-gradient(to right, #00ddeb, #2563eb);
+            transform: scale(1.05);
+        }
+        .buy-btn.light { background: linear-gradient(to right, #3b82f6, #00f7ff); }
+        .buy-btn.light:hover { background: linear-gradient(to right, #2563eb, #00ddeb); }
+
+        footer {
+            background: #1a1a1a;
+            color: #E0E0E0;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+        footer.light {
+            background: #e0e0e0;
+            color: #333333;
+        }
+        .section-title { color: #3b82f6; }
+        .section-title.light { color: #2563eb; }
+        .narrow-grid {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .social-icon-link-v3 .social-img-v3 {
+            transition: filter 0.3s ease, transform 0.3s ease;
+            height: 28px; 
+            width: auto;
+        }
+        .social-icon-link-v3 .social-img-discord-v3 { 
+            height: 46px; 
+            width: auto;
+        }
+        .social-icon-link-v3:hover .social-img-v3 {
+            filter: brightness(0) saturate(100%) invert(40%) sepia(62%) saturate(662%) hue-rotate(197deg) brightness(97%) contrast(91%);
+            transform: scale(1.1);
+        }
+
+        .peripherals-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 1rem;
+        }
+        @media (min-width: 640px) { 
+            .peripherals-grid { grid-template-columns: repeat(2, 1fr); }
+            .card { padding: 2rem; }
+            .senpai-settings-card { padding: 1.5rem; }
+        }
+        @media (min-width: 1024px) { 
+            .peripherals-grid { grid-template-columns: repeat(3, 1fr); }
+        }
+        .tooltip {
+            visibility: hidden; background: rgba(0, 0, 0, 0.8); color: #E0E0E0;
+            padding: 0.5rem; border-radius: 4px; position: absolute;
+            top: 0; left: 50%; transform: translateX(-50%) translateY(-100%);
+            margin-top: -0.5rem; z-index: 10; font-size: 0.875rem;
+            white-space: nowrap;
+            transition: background 0.3s ease, color 0.3s ease, opacity 0.2s ease, visibility 0.2s ease;
+            opacity: 0;
+        }
+        .tooltip.light { background: rgba(255, 255, 255, 0.9); color: #333333; }
+        .gear-card:hover .tooltip { visibility: visible; opacity: 1; }
+        .badge {
+            position: absolute; top: 0.5rem; right: 0.5rem; background: #ff4d4f;
+            color: #ffffff; padding: 0.25rem 0.5rem; border-radius: 4px;
+            font-size: 0.75rem; transition: background 0.3s ease;
+        }
+        .badge.light { background: #ef4444; }
+        .video-container {
+            position: relative; width: 100%;
+            max-w-2xl;
+            aspect-ratio: 16 / 9; border-radius: 0.75rem;
+            overflow: hidden; transition: box-shadow 0.3s ease;
+            z-index: 2; cursor: pointer;
+        }
+        .video-container:hover { box-shadow: 0 0 20px rgba(0, 255, 255, 0.3); }
+        .video-container.light:hover { box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); }
+        .video-container img.video-thumbnail-img { width: 100%; height: 100%; object-fit: cover; }
+        .video-container .play-overlay {
+            position: absolute; inset: 0; background: rgba(0, 0, 0, 0.4);
+            transition: background 0.3s ease; display: flex;
+            align-items: center; justify-content: center;
+        }
+        .video-container:hover .play-overlay { background: rgba(0, 0, 0, 0.6); }
+        .video-container .play-icon {
+            width: 64px; height: 64px; color: #22c55e;
+            transition: transform 0.3s ease;
+        }
+        .video-container:hover .play-icon { transform: scale(1.1); }
+        @media (max-width: 640px) {
+            .video-container .play-icon { width: 48px; height: 48px; }
+        }
+
+        .theme-toggle {
+            position: fixed; 
+            top: 1rem; 
+            right: 1rem; 
+            z-index: 50; 
+            background: #3b82f6; 
+            color: #ffffff;       
+            padding: 0.5rem;
+            border-radius: 50%;
+            transition: background 0.3s ease, color 0.3s ease, transform 0.2s ease; 
+        }
+        .theme-toggle.light {
+            background: #f0f0f0; 
+            color: #000000;       
+        }
+        .theme-toggle:hover, .theme-toggle.light:hover { 
+             transform: scale(1.1);
+        }
+        .theme-toggle:hover { 
+            background: #2563eb; 
+        }
+        .theme-toggle.light:hover { 
+            background: #dcdcdc; 
+        }
+
+        .back-to-top {
+            position: fixed; bottom: 2rem; right: 2rem;
+            background: #3b82f6; color: #ffffff; padding: 0.75rem;
+            border-radius: 50%; z-index: 20;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+        .back-to-top:hover { background: #2563eb; transform: scale(1.1); }
+        .back-to-top.light { background: #2563eb; }
+        .back-to-top.light:hover { background: #1d4ed8; }
+
+        .settings-section {
+            width: 100%; padding: 1rem;
+            font-size: 1.1rem; text-align: center; margin-bottom: 10px;
+        }
+        .crosshair-section { text-align: center; }
+        .crosshair-presets {
+            display: flex;
+            justify-content: center;
+            gap: 10px; 
+            margin-top: 1rem;
+        }
+        .preset {
+            width: 50px; height: 50px; background-color: #1a1a1a;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold; color: #ffffff; border-radius: 4px;
+            transition: background 0.3s ease; cursor: pointer;
+        }
+        .preset.light { background-color: #e0e0e0; color: #333333; }
+        .preset:hover { background-color: #3b82f6; }
+        .preset.light:hover { background-color: #2563eb; }
+
+        .modal {
+            display: none; 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center; align-items: center;  
+        }
+        .modal-content {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            padding: 2rem; border-radius: 1rem; width: 90%; max-width: 500px;
+            color: #E0E0E0; 
+            position: relative;
+            animation: fadeInModal 0.3s ease forwards;
+            overflow: hidden;
+        }
+        .modal-content.light {
+            background: rgba(0, 0, 0, 0.05);
+            color: #333333;
+        }
+        .close-btn {
+            position: absolute; top: 1rem; right: 1rem;
+            background: none; border: none; font-size: 1.5rem;
+            color: #E0E0E0; cursor: pointer; transition: color 0.3s ease;
+        }
+        .close-btn.light { color: #333333; }
+        .close-btn:hover { color: #ff4d4f; }
+        .code-display {
+            margin-top: 1rem; white-space: pre-wrap; word-break: break-all;
+            font-family: 'Courier New', Courier, monospace; font-size: 0.9rem;
+            padding: 1rem; background: rgba(0, 0, 0, 0.2); border-radius: 0.5rem;
+            max-height: 300px; overflow-y: auto; overflow-x: hidden;
+        }
+        .code-display.light { background: rgba(255, 255, 255, 0.2); }
+        @keyframes fadeInModal {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        #mobile-menu {
+            background-color: #1f1f1f; 
+        }
+        #mobile-menu.light-theme-menu {
+            background-color: #e5e7eb; 
+        }
+        #mobile-menu a.menu-link:hover { 
+            background-color: #374151; 
+        }
+        #mobile-menu.light-theme-menu a.menu-link:hover { 
+            background-color: #d1d5db; 
+        }
+
+
+        @media (max-width: 640px) { 
+            .card { padding: 1rem; }
+            .senpai-settings-card { padding: 1rem; }
+            .buy-btn { padding: 0.5rem 1rem; }
+            .theme-toggle { top: 0.5rem; right: 0.5rem; padding: 0.4rem; }
+            .back-to-top { bottom: 1rem; right: 1rem; padding: 0.5rem; }
+            .crosshair-presets { flex-wrap: wrap; justify-content: center; }
+            .preset { width: 40px; height: 40px; font-size: 0.875rem; }
+            .modal-content { width: 95%; padding: 1.5rem; }
+            .code-display { max-height: 200px; font-size: 0.8rem; }
+
+            .header-center-content {
+                flex-direction: column; 
+                align-items: center; 
+                gap: 0.25rem; 
+            }
+            .header-center-content .flex.items-center.mr-3, 
+            .header-center-content .flex.items-center.sm\:mr-4 { 
+                margin-right: 0 !important; 
+            }
+             .header-center-content .flex.items-center.ml-3,
+             .header-center-content .flex.items-center.sm\:ml-4 {
+                margin-left: 0 !important;
+            }
+        }
+    </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+    <button class="theme-toggle" aria-label="Toggle theme"><i class="fa-solid fa-sun" style="width: 1.5em;"></i></button>
+    <button class="back-to-top" aria-label="Back to top"><i class="fas fa-arrow-up" style="width: 1.5em;"></i></button>
+
+    <header class="bg-[#1a1a1a] p-4 sticky top-0 z-20 flex items-center justify-between relative">
+        <div class="flex-1">
+        </div>
+        <div class="flex items-center header-center-content"> 
+            <div class="flex items-center mr-3 sm:mr-4"> 
+                <h1 class="text-2xl font-bold header-text">YourSenpaiPlays</h1>
+            </div>
+            <div class="flex items-center space-x-2 sm:space-x-3"> 
+                <a href="https://www.youtube.com/@YourSenpaiPlays" target="_blank" class="social-icon-link-v3">
+                    <img src="upload.wikimedia.org/wikipedia/commons/e/ef/Youtube_logo.png" alt="YouTube Icon" class="social-img-v3">
+                </a>
+                <a href="https://discord.gg/mFpmJsGr96" target="_blank" class="social-icon-link-v3">
+                    <img src="static.vecteezy.com/system/resources/previews/018/930/718/non_2x/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Icon" class="social-img-v3 social-img-discord-v3">
+                </a>
+                <a href="https://www.instagram.com/yoursenpaiplays/" target="_blank" class="social-icon-link-v3">
+                    <img src="https://www.svgrepo.com/show/452229/instagram-1.svg" alt="Discord Icon" class="social-img-v3 social-img-discord-v3">
+                </a>
+            </div>
+        </div>
+        <div class="flex-1 flex justify-end items-center"> 
+            <button id="hamburger-menu-button" class="p-2 focus:outline-none z-50" style="display:none;">
+                <i class="fas fa-bars fa-lg header-text"></i>
+            </button>
+        </div>
+
+    </header>
+    <main class="flex-grow p-6">
+        <section class="mb-12 narrow-grid">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
+                <div class="video-player-wrapper w-full flex justify-center md:justify-start">
+                    <div class="video-container group" data-video-src="https://www.youtube.com/embed/7gJZQT_OxJM?controls=1&modestbranding=1&rel=0">
+                        <img src="https://img.youtube.com/vi/7gJZQT_OxJM/hqdefault.jpg" alt="Video thumbnail" class="w-full h-full object-cover video-thumbnail-img" />
+                        <div class="play-overlay">
+                            <svg class="play-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+                        </div>
+                    </div>
+                </div>
+                <div class="settings-wrapper w-full flex justify-center md:justify-start">
+                    <div class="card senpai-settings-card w-auto max-w-full" style="min-width:360px; width:auto; display:inline-block;">
+                        <div class="settings-section">
+                            <h4 class="text-2xl font-bold text-yellow-400 mb-4">What I use</h4>
+                            <div class="flex flex-col gap-4 w-full max-w-4xl mx-auto">
+                                <div class="flex-1 body-text text-base border-b border-gray-700 pb-3 mb-2">
+                                    <div class="whitespace-nowrap"><span class="font-semibold">DPI:</span> 1600</div>
+                                    <div class="whitespace-nowrap"><span class="font-semibold">Sensitivity:</span> 0.17</div>
+                                    <div class="whitespace-nowrap"><span class="font-semibold">Resolution:</span> 1920x1080 (Native)</div>
+                                    <div class="whitespace-nowrap"><span class="font-semibold">Join Discord for Valorant Settings</span></div>
+                                </div>
+                                <div class="flex-1 body-text text-base pt-2">
+                                    <div class="mb-1 font-semibold">Specs & Gear:</div>
+                                    <div class="whitespace-nowrap"><span class="font-semibold">Laptop:</span> ASUS TUF F15 (i5 11th Gen, RTX 3050, 16GB RAM)</div>
+                                    <div class="whitespace-nowrap"><span class="font-semibold">Monitor:</span> BenQ GW2780 – 60Hz</div>
+                                    <div class="whitespace-nowrap"><span class="font-semibold">Mouse:</span> Razer Viper Mini</div>
+                                    <div class="whitespace-nowrap"><span class="font-semibold">Keyboard:</span> Redgear Shadow Blade</div>
+                                    <div class="whitespace-nowrap"><span class="font-semibold">Headset:</span> Razer BlackShark V2 / Corsair HS55 Surround</div>
+                                    <div class="whitespace-nowrap"><span class="font-semibold">Editing:</span> Adobe Premiere Pro + After Effects</div>
+                                    <div class="whitespace-nowrap"><span class="font-semibold">Recording:</span> OBS Studio</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="narrow-grid">
+            <div class="peripherals-grid" id="peripherals-container"></div>
+        </section>
+    </main>
+
+    <footer class="p-6 text-center">
+        <div class="narrow-grid">
+        </div>
+        <p class="text-sm body-text">© 2025 Senpai</p>
+    </footer>
+
+    <div class="modal" id="crosshairModal">
+        <div class="modal-content">
+            <button class="close-btn">×</button>
+            <h3 class="text-xl font-bold mb-2 header-text text-center" id="crosshairTitle"></h3>
+            <div class="code-display" id="crosshairCode"></div>
+        </div>
+    </div>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        const themeElements = {
+            body: null, themeToggle: null, themeToggleIcon: null,
+            header: null, footer: null, backToTopBtn: null,
+            mobileMenu: null 
+        };
+        
+        function applyTheme(isLight) {
+            if (!themeElements.body) themeElements.body = document.body;
+            if (!themeElements.body) return;
+            themeElements.body.classList.toggle('light', isLight);
+            if (themeElements.themeToggleIcon) {
+                themeElements.themeToggleIcon.classList.toggle('fa-sun', !isLight);
+                themeElements.themeToggleIcon.classList.toggle('fa-moon', isLight);
+            }
+            if (themeElements.themeToggle) themeElements.themeToggle.classList.toggle('light', isLight);
+            
+            const currentModalContent = document.querySelector('#crosshairModal .modal-content');
+            const currentModalCloseBtn = document.querySelector('#crosshairModal .close-btn');
+            const currentModalCodeDisplay = document.getElementById('crosshairCode');
+            if (currentModalContent) currentModalContent.classList.toggle('light', isLight);
+            if (currentModalCloseBtn) currentModalCloseBtn.classList.toggle('light', isLight);
+            if (currentModalCodeDisplay) currentModalCodeDisplay.classList.toggle('light', isLight);
+            
+            document.querySelectorAll('.preset').forEach(preset => preset.classList.toggle('light', isLight));
+            
+            if (themeElements.header) {
+                themeElements.header.classList.toggle('light', isLight);
+                if (gsap && typeof ScrollTrigger !== 'undefined') {
+                    gsap.set(themeElements.header, { 
+                        clearProps: "backgroundColor,boxShadow,backdropFilter,webkitBackdropFilter" 
+                    });
+                    ScrollTrigger.update();
+                }
+            } 
+            
+            if (themeElements.mobileMenu) {
+                themeElements.mobileMenu.classList.toggle('light-theme-menu', isLight);
+            }
+
+            if (themeElements.footer) themeElements.footer.classList.toggle('light', isLight); 
+            if (themeElements.backToTopBtn) themeElements.backToTopBtn.classList.toggle('light', isLight);
+            
+            document.querySelectorAll('.card').forEach(card => card.classList.toggle('light', isLight));
+            document.querySelectorAll('.buy-btn').forEach(btn => btn.classList.toggle('light', isLight)); 
+            document.querySelectorAll('.section-title').forEach(title => title.classList.toggle('light', isLight));
+            document.querySelectorAll('.badge').forEach(badge => badge.classList.toggle('light', isLight));
+            document.querySelectorAll('.video-container').forEach(vc => vc.classList.toggle('light', isLight));
+            document.querySelectorAll('.tooltip').forEach(tooltip => tooltip.classList.toggle('light', isLight));
+            document.querySelectorAll('.header-text').forEach(ht => ht.classList.toggle('light', isLight)); 
+            
+            document.querySelectorAll('.body-text').forEach(bt => bt.classList.toggle('light', isLight)); 
+            document.querySelectorAll('.newsletter-input').forEach(input => input.classList.toggle('light', isLight));
+        }
+
+        function toggleTheme() {
+            if (!themeElements.body) themeElements.body = document.body;
+            if (!themeElements.body) return;
+            const isCurrentlyLight = themeElements.body.classList.contains('light');
+            applyTheme(!isCurrentlyLight);
+            localStorage.setItem('theme', !isCurrentlyLight ? 'light' : 'dark');
+        }
+
+        function setInitialTheme() {
+            if (!themeElements.body) themeElements.body = document.body;
+            if (!themeElements.body) return;
+            const savedTheme = localStorage.getItem('theme');
+            const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            applyTheme(savedTheme ? savedTheme === 'light' : !prefersDark);
+        }
+
+        function handleBackToTop() {
+            const backToTopButton = themeElements.backToTopBtn;
+            if (!backToTopButton) return;
+            gsap.set(backToTopButton, { autoAlpha: 0, display: 'none' });
+            let isVisible = false;
+            function onScroll() {
+                if (window.scrollY > 300) {
+                    if (!isVisible) { gsap.to(backToTopButton, { autoAlpha: 1, display: 'block', duration: 0.3 }); isVisible = true; }
+                } else {
+                    if (isVisible) { gsap.to(backToTopButton, { autoAlpha: 0, duration: 0.3, onComplete: () => gsap.set(backToTopButton, { display: 'none' }) }); isVisible = false; }
+                }
+            }
+            window.addEventListener('scroll', onScroll, { passive: true });
+            backToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+        }
+
+        function setupParallax() {
+            const videoWrapper = document.querySelector('.video-player-wrapper');
+            if (!videoWrapper) return;
+            gsap.to(videoWrapper, {
+                backgroundPosition: '50% 100%', ease: 'none',
+                scrollTrigger: { trigger: videoWrapper, start: 'top bottom', end: 'bottom top', scrub: true }
+            });
+        }
+        
+        function setupHeaderScrollAnimation() {
+            const header = themeElements.header;
+            if (!header) return; 
+            ScrollTrigger.create({
+                trigger: document.body, start: "top top", end: "+=150", scrub: 0.5,
+                onUpdate: self => {
+                    const progress = self.progress;
+                    if (!header.classList.contains('light')) { 
+                        gsap.to(header, {
+                            backgroundColor: progress > 0.1 ? "rgba(26, 26, 26, 0.85)" : "#1a1a1a", 
+                            boxShadow: progress > 0.1 ? "0 2px 10px rgba(0,0,0,0.3)" : "none", 
+                            duration: 0.2
+                        });
+                        header.style.backdropFilter = progress > 0.1 ? "blur(8px)" : "none";
+                        header.style.webkitBackdropFilter = progress > 0.1 ? "blur(8px)" : "none";
+                    } else { 
+                         gsap.to(header, {
+                            backgroundColor: progress > 0.1 ? "rgba(243, 244, 246, 0.85)" : "#f3f4f6", 
+                            boxShadow: progress > 0.1 ? "0 2px 6px rgba(0,0,0,0.15)" : "0 2px 4px rgba(0,0,0,0.05)", 
+                            duration: 0.2
+                        });
+                        if (progress > 0.1) { 
+                             header.style.backdropFilter = "blur(8px)";
+                             header.style.webkitBackdropFilter = "blur(8px)";
+                        } else { 
+                            header.style.backdropFilter = "none";
+                            header.style.webkitBackdropFilter = "none";
+                        }
+                    }
+                     gsap.to(header, {
+                        paddingTop: progress > 0.1 ? "0.75rem" : "1rem",
+                        paddingBottom: progress > 0.1 ? "0.75rem" : "1rem",
+                        duration: 0.2
+                    });
+                }
+            });
+        }
+
+        const peripherals = [
+            { name: "ASUS TUF F15 (i5 11th Gen, RTX 3050, 16GB RAM)", image: "", amazonLink: "https://www.amazon.com/dp/B09R6FJWWS?tag=youraffid-20", tooltip: "My gaming laptop." },
+            { name: "BenQ GW2780 – 60Hz", image: "https://m.media-amazon.com/images/I/81r+LNwq2eL._AC_SL1500_.jpg", amazonLink: "https://www.amazon.com/dp/B072M34RQC?tag=youraffid-20", tooltip: "My monitor." },
+            { name: "Razer Viper Mini", image: "https://m.media-amazon.com/images/I/61r0B5+3lLL._AC_SL1500_.jpg", amazonLink: "https://www.amazon.com/dp/B0859RBSM1?tag=youraffid-20", tooltip: "My mouse." },
+            { name: "Redgear Shadow Blade", image: "https://m.media-amazon.com/images/I/71l1z2FQpGL._AC_SL1500_.jpg", amazonLink: "https://www.amazon.com/dp/B07Q9VJYNP?tag=youraffid-20", tooltip: "My keyboard." },
+            { name: "Razer BlackShark V2", image: "https://m.media-amazon.com/images/I/71pWzhdJNwL._AC_SL1500_.jpg", amazonLink: "https://www.amazon.com/dp/B086PKMZ21?tag=youraffid-20", tooltip: "My headset." },
+            { name: "Corsair HS55 Surround", image: "https://m.media-amazon.com/images/I/71Q6FQnQKGL._AC_SL1500_.jpg", amazonLink: "https://www.amazon.com/dp/B09YVQ6J9B?tag=youraffid-20", tooltip: "Alternate headset." }
+        ];
+
+        function renderPeripherals() {
+            const container = document.getElementById("peripherals-container");
+            if (!container) { console.error("Peripherals container not found!"); return; }
+            container.innerHTML = '';
+            const isLightTheme = themeElements.body && themeElements.body.classList.contains('light');
+            peripherals.forEach(peripheral => {
+                const card = document.createElement("div");
+                card.className = `gear-card card ${isLightTheme ? 'light' : ''}`;
+                card.innerHTML = `
+                    <div class="tooltip ${isLightTheme ? 'light' : ''}">${peripheral.tooltip}</div>
+                    ${peripheral.badge ? `<span class="badge ${isLightTheme ? 'light' : ''}">${peripheral.badge}</span>` : ""}
+                    <img src="${peripheral.image}" alt="${peripheral.name}">
+                    <div class="gear-card-content">
+                        <h3 class="text-xl font-bold mt-2 header-text">${peripheral.name}</h3>
+                        <a href="${peripheral.amazonLink}" target="_blank" class="buy-btn mt-2 ${isLightTheme ? 'light' : ''}">
+                            <i class="fas fa-shopping-cart"></i> Buy Now
+                        </a>
+                    </div>`;
+                card.gsap_scale = 1; card.gsap_rotation = 0; card.gsap_rotationY = 0; card.gsap_y = 0; card.gsap_opacity = 1;
+                 card.addEventListener("click", (event) => {
+                    if (event.target.closest(".buy-btn")) return;
+                    if (peripheral.name === "ZOWIE XL2566X+") { gsap.to(card, { scale: card.gsap_scale === 1.03 ? 1 : 1.03, duration: 0.3, ease: "power1.out", onComplete: () => card.gsap_scale = gsap.getProperty(card, "scale") }); }
+                    else if (peripheral.name === "Razer DeathAdder V3 Pro") { gsap.to(card, { rotation: card.gsap_rotation === 15 ? 0 : 15, duration: 0.5, ease: "power1.inOut", onComplete: () => card.gsap_rotation = gsap.getProperty(card, "rotation") }); }
+                    else if (peripheral.name === "Skypad 3.0(Glass Mousepad)") { gsap.to(card, { rotationY: card.gsap_rotationY === 15 ? 0 : 15, duration: 0.6, ease: "back.inOut(1.7)", onComplete: () => card.gsap_rotationY = gsap.getProperty(card, "rotationY")}); }
+                });
+                container.appendChild(card);
+            });
+            animatePeripheralCardsOnScroll();
+        }
+
+        function animatePeripheralCardsOnScroll() {
+            gsap.utils.toArray(".gear-card").forEach((card) => {
+                gsap.to(card, {
+                    opacity: 1, y: 0, duration: 0.6, ease: "power2.out", stagger: 0.1,
+                    scrollTrigger: { trigger: card, start: "top 90%", toggleActions: "play none none none", once: true, }
+                });
+            });
+        }
+        
+        function showCrosshairModal(presetNumber) {
+            const modal = document.getElementById('crosshairModal');
+            const codeDisp = document.getElementById('crosshairCode');
+            const titleDisp = document.getElementById('crosshairTitle');
+            if (!modal || !codeDisp || !titleDisp) { console.error("MODAL ERROR: Crucial modal elements not found!"); return; }
+            let code = '', title = '';
+            switch (String(presetNumber)) {
+                case '1': code = '0;p;0;s;1;P;o;0.842;d;1;z;1;f;0;0t;1;0l;1;0o;0;0a;1;0f;0;1b;0;A;o;0.633;d;1;0b;0;1b;0;S;c;0;s;0.716;o;0.961'; title = 'Dot Small'; break;
+                case '2': code = '0;s;1;P;c;5;o;1;0t;8;0l;2;0o;4;0a;1;0f;0;1o;5;1a;1;1m;0;1f;0'; title = '12 Dots/Flower'; break;
+                case '3': code = '0;s;1;P;c;4;h;0;0t;4;0l;1;0o;1;0a;1;0f;0;1b;0;S;s;0.789;o;1'; title = 'Yellow Box'; break;
+                case '4': code = '0;p;0;c;1;s;1;P;c;1;o;1;f;0;0t;6;0l;1;0a;1;0f;0;1t;0;1l;0;1o;0;1a;0;1m;0;1f;0;A;c;7;h;0;0t;1;0l;10;0v;11;0o;2;0a;1;0f;0;1b;0;S;c;0;o;1'; title = 'Green Square'; break;
+                case '5': code = '0;P;c;1;o;1;0t;1;0a;1;0f;0;1t;3;1l;4;1o;4;1a;0;1m;0;1f;0'; title = 'Large Green Crosshair'; break;
+                default: console.warn("MODAL: Unknown preset number:", presetNumber); return;
+            }
+            codeDisp.textContent = code; titleDisp.textContent = title;
+            modal.style.display = 'flex'; 
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('crosshairModal');
+            if(modal) { modal.style.display = 'none'; }
+            else { console.error("MODAL ERROR: Crosshair modal not found! Cannot close modal."); }
+        }
+
+        function animateSettingsCard() {
+            const settingsCard = document.querySelector('.senpai-settings-card');
+            if (settingsCard) {
+                gsap.to(settingsCard, {
+                    opacity: 1, y: 0, duration: 0.8, ease: "power3.out",
+                    scrollTrigger: { trigger: settingsCard, start: "top 90%", toggleActions: "play none none none", once: true }
+                });
+            }
+        }
+
+        function setupVideoPlayer() {
+            const videoContainer = document.querySelector('.video-container');
+            if (!videoContainer) { console.error("VIDEO PLAYER ERROR: Video container not found."); return; }
+            const videoSrcFromData = videoContainer.dataset.videoSrc;
+            const thumbnailImg = videoContainer.querySelector('.video-thumbnail-img');
+            const playOverlay = videoContainer.querySelector('.play-overlay');
+            if (!videoSrcFromData || videoSrcFromData.trim() === "" || videoSrcFromData.toLowerCase() === "replace_with_your_youtube_embed_url" || !videoSrcFromData.toLowerCase().startsWith("http")) {
+                console.error(`VIDEO PLAYER ERROR: 'data-video-src' is invalid. Value: "${videoSrcFromData}". Must be valid YouTube EMBED URL.`);
+                if (playOverlay) playOverlay.innerHTML = `<p style="color:white; text-align:center; padding:10px; font-size:0.8rem;">Video link error.<br>Use YouTube EMBED URL.</p>`;
+                return;
+            }
+            if (!videoSrcFromData.includes("embed/index.html")) {
+                console.warn(`VIDEO PLAYER WARNING: 'data-video-src' ("${videoSrcFromData}") MUST contain "/embed/" for YouTube videos.`);
+                if (playOverlay) playOverlay.innerHTML = `<p style="color:red; background:rgba(255,255,255,0.1); text-align:center; padding:10px; font-size:0.8rem; border:1px solid red;"><b>URL ERROR:</b> Video URL NOT YouTube EMBED link.<br>Fix 'data-video-src'.</p>`;
+            }
+            if (!thumbnailImg || !playOverlay) { console.error("VIDEO PLAYER ERROR: Thumbnail or Play overlay not found."); return; }
+            videoContainer.addEventListener('click', function loadAndPlayVideo() {
+                videoContainer.removeEventListener('click', loadAndPlayVideo);
+                const containerComputedStyle = getComputedStyle(videoContainer);
+                const parentWidthPx = containerComputedStyle.width; const parentHeightPx = containerComputedStyle.height;
+                if (!parentWidthPx || parentWidthPx === "0px" || !parentHeightPx || parentHeightPx === "0px") {
+                    console.error("VIDEO PLAYER CRITICAL: Parent container 0px dimensions.");
+                    if(playOverlay && !playOverlay.innerHTML.includes("URL ERROR")) playOverlay.innerHTML = `<p style="color:white;">Container size error.</p>`;
+                    return;
+                }
+                gsap.to([thumbnailImg, playOverlay], {
+                    opacity: 0, duration: 0.3,
+                    onComplete: () => {
+                        if (thumbnailImg) thumbnailImg.style.display = 'none';
+                        if (playOverlay) playOverlay.style.display = 'none';
+                        const iframe = document.createElement('iframe');
+                        iframe.style.position = 'absolute'; iframe.style.top = '0'; iframe.style.left = '0';
+                        iframe.style.width = parentWidthPx; iframe.style.height = parentHeightPx;
+                        iframe.style.border = 'none';
+                        let finalVideoSrc = videoSrcFromData;
+                         if (videoSrcFromData.includes('youtube.com/index.html') || videoSrcFromData.includes('youtu.be/index.html')) { 
+                            finalVideoSrc += (videoSrcFromData.includes('?') ? '&' : '?') + 'autoplay=1';
+                        }
+                        iframe.src = finalVideoSrc;
+                        iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                        iframe.setAttribute('allowfullscreen', '');
+                        iframe.setAttribute('referrerpolicy', 'strict-origin-when-cross-origin');
+                        iframe.style.opacity = '0';
+                        videoContainer.appendChild(iframe);
+                        requestAnimationFrame(() => {
+                            if (videoContainer.contains(iframe)) {
+                                const cs = getComputedStyle(iframe);
+                                if (cs.width === "0px" || cs.height === "0px") console.error("VIDEO PLAYER CRITICAL: Iframe dimensions STILL 0px!");
+                            } else { console.error("VIDEO PLAYER CRITICAL: Iframe NOT in DOM."); return; }
+                            gsap.to(iframe, { opacity: 1, duration: 0.4});
+                        });
+                    }
+                });
+            });
+        }
+
+        document.addEventListener("DOMContentLoaded", () => {
+            themeElements.body = document.body;
+            themeElements.themeToggle = document.querySelector('.theme-toggle');
+            themeElements.themeToggleIcon = document.querySelector('.theme-toggle i');
+            themeElements.header = document.querySelector('header');
+            themeElements.footer = document.querySelector('footer');
+            themeElements.backToTopBtn = document.querySelector('.back-to-top');
+            themeElements.mobileMenu = document.getElementById('mobile-menu'); 
+
+            setInitialTheme();
+            renderPeripherals(); 
+            
+            if(themeElements.themeToggle) themeElements.themeToggle.addEventListener('click', toggleTheme);
+            
+            const modalCloseButton = document.querySelector('#crosshairModal .close-btn');
+            if(modalCloseButton) modalCloseButton.addEventListener('click', closeModal);
+
+            document.querySelectorAll('.preset').forEach(preset => {
+                preset.addEventListener('click', () => {
+                    gsap.timeline()
+                        .to(preset, { scale: 0.9, duration: 0.1, ease: "power1.in" })
+                        .to(preset, { scale: 1, duration: 0.1, ease: "power1.out" });
+                    setTimeout(() => showCrosshairModal(preset.getAttribute('data-preset')), 50);
+                });
+            });
+            
+            handleBackToTop();
+            setupParallax();
+            setupVideoPlayer();
+            setupHeaderScrollAnimation();
+            animateSettingsCard();
+
+            const newsletterForm = document.getElementById('generic-newsletter-form');
+            const newsletterThankYou = document.getElementById('newsletter-thank-you');
+            const newsletterEmailInput = document.getElementById('newsletter-email');
+            const newsletterPrivacyNote = document.getElementById('newsletter-privacy-note');
+
+            if (newsletterForm && newsletterThankYou && newsletterEmailInput && newsletterPrivacyNote) {
+                newsletterForm.addEventListener('submit', function(event) {
+                    event.preventDefault(); 
+                    if (newsletterEmailInput.value.trim() === '' || !newsletterEmailInput.checkValidity()) {
+                        newsletterEmailInput.focus();
+                        return; 
+                    }
+                    newsletterForm.classList.add('hidden');
+                    newsletterPrivacyNote.classList.add('hidden');
+                    newsletterThankYou.classList.remove('hidden');
+                });
+            }
+
+            const hamburgerBtn = document.getElementById('hamburger-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu'); 
+            const hamburgerIcon = hamburgerBtn ? hamburgerBtn.querySelector('i') : null; 
+
+            if (hamburgerBtn && mobileMenu && hamburgerIcon) {
+                hamburgerBtn.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
+                    if (mobileMenu.classList.contains('hidden')) {
+                        hamburgerIcon.classList.remove('fa-times');
+                        hamburgerIcon.classList.add('fa-bars');
+                        // If the icon had temporary styles, clear them when menu is closed
+                        // For now, the temporary style is directly in the HTML,
+                        // but if it were applied via JS, you'd clear it here.
+                        // hamburgerIcon.style.cssText = ""; // Example if styles were JS applied
+                    } else {
+                        hamburgerIcon.classList.remove('fa-bars');
+                        hamburgerIcon.classList.add('fa-times');
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+
+<!-- Mirrored from senpai.vip/ by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 03 Jul 2025 06:25:34 GMT -->
+</html>

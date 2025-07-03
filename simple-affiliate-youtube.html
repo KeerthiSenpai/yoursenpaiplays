@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YouTube Channel & Amazon Affiliate</title>
+    <link href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        body {
+            background: #0a0a0a;
+            color: #E0E0E0;
+            font-family: 'Inter', sans-serif;
+        }
+        header {
+            background: #1a1a1a;
+        }
+        .header-text {
+            color: #fff;
+        }
+        .social-icon-link-v3 img {
+            transition: filter 0.3s, transform 0.3s;
+        }
+        .social-icon-link-v3:hover img {
+            filter: brightness(1.2) drop-shadow(0 0 6px #00f7ff);
+            transform: scale(1.1);
+        }
+        .card, .bg-card {
+            background: rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        .card:hover {
+            box-shadow: 0 0 20px rgba(0,255,255,0.3);
+        }
+        .buy-btn {
+            background: linear-gradient(to right, #00f7ff, #3b82f6);
+            color: #fff;
+            border-radius: 8px;
+            padding: 0.75rem 1.5rem;
+            transition: background 0.3s, transform 0.2s;
+        }
+        .buy-btn:hover {
+            background: linear-gradient(to right, #00ddeb, #2563eb);
+            transform: scale(1.05);
+        }
+        .section-title {
+            color: #3b82f6;
+        }
+        .text-yellow-400 {
+            color: #FFD600;
+        }
+        .bg-card {
+            background: #181818;
+        }
+        .rounded-xl {
+            border-radius: 1rem;
+        }
+        .shadow-lg {
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+
+<body class="bg-[#0a0a0a] text-[#E0E0E0] min-h-screen flex flex-col" style="font-family: 'Inter', sans-serif;">
+    <!-- Header -->
+    <header class="bg-[#1a1a1a] p-4 sticky top-0 z-20 flex items-center justify-between relative">
+        <div class="flex-1"></div>
+        <div class="flex items-center header-center-content">
+            <div class="flex items-center mr-3 sm:mr-4">
+                <h1 class="text-2xl font-bold header-text">YourSenpaiPlays</h1>
+            </div>
+            <div class="flex items-center space-x-2 sm:space-x-3">
+                <a href="https://www.youtube.com/@YourChannel" target="_blank" class="social-icon-link-v3">
+                    <img src="https://www.svgrepo.com/show/475700/youtube-color.svg" alt="YouTube Icon" class="w-9 h-9">
+                </a>
+                <a href="https://discord.gg/hMH4bRAvuA" target="_blank" class="social-icon-link-v3">
+                    <img src="https://static.vecteezy.com/system/resources/previews/018/930/718/non_2x/discord-logo-discord-icon-transparent-free-png.png" alt="Discord Icon" class="w-9 h-9">
+                </a>
+            </div>
+        </div>
+        <div class="flex-1 flex justify-end items-center"></div>
+    </header>
+
+    <main class="flex-grow p-6">
+        <section class="mb-12 max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
+                <!-- Video -->
+                <div class="w-full flex justify-center md:justify-start">
+                    <div class="bg-card card p-8 w-full max-w-lg flex flex-col items-center justify-center aspect-w-16 aspect-h-9 rounded-xl overflow-hidden shadow-lg">
+                        <iframe class="w-full h-64 md:h-80 rounded-xl" src="https://www.youtube.com/embed/7gJZQT_OxJM" title="Calm Aim Valorant Highlights | Smooth Flicks &amp; Clean Crosshair Placement" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <!-- Settings Card -->
+                <div class="w-full flex justify-center md:justify-start">
+                    <div class="bg-card card p-8 w-full max-w-lg flex flex-col items-center">
+                        <div class="mb-6 w-full">
+                            <h4 class="text-2xl font-bold text-yellow-400 mb-1">Sensitivity</h4>
+                            <p class="mb-1">DPI: <span class="font-semibold">1600</span></p>
+                            <p class="mb-1">Sensitivity: <span class="font-semibold">0.17</span></p>
+                            <p class="mb-1">Resolution: <span class="font-semibold">1920x1080 (Native)</span></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="max-w-6xl mx-auto">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8" id="peripherals-container">
+                <!-- Laptop -->
+                <div class="bg-card card p-6 flex flex-col items-center shadow-lg">
+                    <img src="https://m.media-amazon.com/images/I/71lYhcc++AL._AC_SL1500_.jpg" alt="ASUS TUF F15" class="w-32 h-32 object-contain mb-3">
+                    <div class="font-semibold mb-2 text-center">ASUS TUF F15 (i5 11th Gen, RTX 3050, 16GB RAM)</div>
+                    <a href="https://www.amazon.com/dp/B09R6FJWWS?tag=youraffid-20" target="_blank" class="mt-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Buy Now</a>
+                </div>
+                <!-- Monitor -->
+                <div class="bg-card card p-6 flex flex-col items-center shadow-lg">
+                    <img src="https://m.media-amazon.com/images/I/81r+LNwq2eL._AC_SL1500_.jpg" alt="BenQ GW2780" class="w-32 h-32 object-contain mb-3">
+                    <div class="font-semibold mb-2 text-center">BenQ GW2780 – 60Hz</div>
+                    <a href="https://www.amazon.com/dp/B072M34RQC?tag=youraffid-20" target="_blank" class="mt-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Buy Now</a>
+                </div>
+                <!-- Mouse -->
+                <div class="bg-card card p-6 flex flex-col items-center shadow-lg">
+                    <img src="https://m.media-amazon.com/images/I/61r0B5+3lLL._AC_SL1500_.jpg" alt="Razer Viper Mini" class="w-32 h-32 object-contain mb-3">
+                    <div class="font-semibold mb-2 text-center">Razer Viper Mini</div>
+                    <a href="https://www.amazon.com/dp/B0859RBSM1?tag=youraffid-20" target="_blank" class="mt-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Buy Now</a>
+                </div>
+                <!-- Keyboard -->
+                <div class="bg-card card p-6 flex flex-col items-center shadow-lg">
+                    <img src="https://m.media-amazon.com/images/I/71l1z2FQpGL._AC_SL1500_.jpg" alt="Redgear Shadow Blade" class="w-32 h-32 object-contain mb-3">
+                    <div class="font-semibold mb-2 text-center">Redgear Shadow Blade</div>
+                    <a href="https://www.amazon.com/dp/B07Q9VJYNP?tag=youraffid-20" target="_blank" class="mt-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Buy Now</a>
+                </div>
+                <!-- Headset 1 -->
+                <div class="bg-card card p-6 flex flex-col items-center shadow-lg">
+                    <img src="https://m.media-amazon.com/images/I/71pWzhdJNwL._AC_SL1500_.jpg" alt="Razer BlackShark V2" class="w-32 h-32 object-contain mb-3">
+                    <div class="font-semibold mb-2 text-center">Razer BlackShark V2</div>
+                    <a href="https://www.amazon.com/dp/B086PKMZ21?tag=youraffid-20" target="_blank" class="mt-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Buy Now</a>
+                </div>
+                <!-- Headset 2 -->
+                <div class="bg-card card p-6 flex flex-col items-center shadow-lg">
+                    <img src="https://m.media-amazon.com/images/I/71Q6FQnQKGL._AC_SL1500_.jpg" alt="Corsair HS55 Surround" class="w-32 h-32 object-contain mb-3">
+                    <div class="font-semibold mb-2 text-center">Corsair HS55 Surround</div>
+                    <a href="https://www.amazon.com/dp/B09YVQ6J9B?tag=youraffid-20" target="_blank" class="mt-auto bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">Buy Now</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-center p-4 text-gray-400">
+        © 2025 My YouTube Channel. Amazon Affiliate links included.
+    </footer>
+    <!-- Font Awesome for icons -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+</body>
+</html>
