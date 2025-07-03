@@ -406,7 +406,7 @@
         <section class="mb-12 narrow-grid">
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8 items-start">
                 <div class="video-player-wrapper w-full flex justify-center md:justify-start">
-                    <div class="video-container group" data-video-src="https://www.youtube.com/embed/7gJZQT_OxJM?controls=1&modestbranding=1&rel=0">
+                    <div class="video-container group" data-video-src="https://www.youtube.com/embed/7gJZQT_OxJM">
                         <img src="https://img.youtube.com/vi/7gJZQT_OxJM/hqdefault.jpg" alt="Video thumbnail" class="w-full h-full object-cover video-thumbnail-img" />
                         <div class="play-overlay">
                             <svg class="play-icon" fill="currentColor" viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
@@ -426,11 +426,11 @@
                                 </div>
                                 <div class="flex-1 body-text text-base pt-2">
                                     <div class="mb-1 font-semibold">Specs & Gear:</div>
-                                    <div class="whitespace-nowrap"><span class="font-semibold">Laptop:</span> ASUS TUF F15 (i5 11th Gen, RTX 3050, 16GB RAM)</div>
+                                    <div class="whitespace-nowrap"><span class="font-semibold">Laptop:</span> ASUS TUF F15 2021 model</div>
                                     <div class="whitespace-nowrap"><span class="font-semibold">Monitor:</span> BenQ GW2780 – 60Hz</div>
                                     <div class="whitespace-nowrap"><span class="font-semibold">Mouse:</span> Razer Viper Mini</div>
                                     <div class="whitespace-nowrap"><span class="font-semibold">Keyboard:</span> Redgear Shadow Blade</div>
-                                    <div class="whitespace-nowrap"><span class="font-semibold">Headset:</span> Razer BlackShark V2 / Corsair HS55 Surround</div>
+                                    <div class="whitespace-nowrap"><span class="font-semibold">Headset:</span> Razer BlackShark V2</div>
                                     <div class="whitespace-nowrap"><span class="font-semibold">Editing:</span> Adobe Premiere Pro + After Effects</div>
                                     <div class="whitespace-nowrap"><span class="font-semibold">Recording:</span> OBS Studio</div>
                                 </div>
@@ -596,12 +596,14 @@
         }
 
         const peripherals = [
-            { name: "ASUS TUF F15 (i5 11th Gen, RTX 3050, 16GB RAM)", image: "", amazonLink: "https://www.amazon.com/dp/B09R6FJWWS?tag=youraffid-20", tooltip: "My gaming laptop." },
-            { name: "BenQ GW2780 – 60Hz", image: "https://m.media-amazon.com/images/I/81r+LNwq2eL._AC_SL1500_.jpg", amazonLink: "https://www.amazon.com/dp/B072M34RQC?tag=youraffid-20", tooltip: "My monitor." },
-            { name: "Razer Viper Mini", image: "https://m.media-amazon.com/images/I/61r0B5+3lLL._AC_SL1500_.jpg", amazonLink: "https://www.amazon.com/dp/B0859RBSM1?tag=youraffid-20", tooltip: "My mouse." },
-            { name: "Redgear Shadow Blade", image: "https://m.media-amazon.com/images/I/71l1z2FQpGL._AC_SL1500_.jpg", amazonLink: "https://www.amazon.com/dp/B07Q9VJYNP?tag=youraffid-20", tooltip: "My keyboard." },
-            { name: "Razer BlackShark V2", image: "https://m.media-amazon.com/images/I/71pWzhdJNwL._AC_SL1500_.jpg", amazonLink: "https://www.amazon.com/dp/B086PKMZ21?tag=youraffid-20", tooltip: "My headset." },
-            { name: "Corsair HS55 Surround", image: "https://m.media-amazon.com/images/I/71Q6FQnQKGL._AC_SL1500_.jpg", amazonLink: "https://www.amazon.com/dp/B09YVQ6J9B?tag=youraffid-20", tooltip: "Alternate headset." }
+            { name: "ASUS TUF F15 - Latest Model", image: "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fdlcdnwebimgs.asus.com%2Fgain%2F47be2296-5fde-4c9b-b262-8c6b8879a020%2F&f=1&nofb=1&ipt=c904598496cb6e7545a9d97b2d0dc68927b686ad84d1287e13652a98bd648b60", amazonLink: "https://amzn.in/d/iWO2lo5", tooltip: "Gaming laptop." },
+            { name: "LG Ultragear  - 180 HZ", image: "monitor_image-removebg-preview.png", amazonLink: "https://amzn.in/d/0SmymLg", tooltip: "Monitor." },
+            { name: "Logitech G 203", image: "mouse-removebg-preview.png", amazonLink: "https://amzn.in/d/549oBkB", tooltip: "Mouse." },
+            { name: "EvoFox Ronin Wireless TKL", image: "keyboard-removebg-preview.png", amazonLink: "https://amzn.in/d/5iBewS6", tooltip: "Keyboard." },
+            { name: "Razer BlackShark V2", image: "headphone-removebg-preview.png", amazonLink: "https://amzn.in/d/4xRC96C", tooltip: "My headset." },
+            { name: "Corsair HS55 Surround", image: "headphone2-removebg-preview.png", amazonLink: "https://amzn.in/d/53OFMhj", tooltip: "Alternate headset." },
+            { name: "Mouse pad", image: "mousepad-removebg-preview.png", amazonLink: "https://amzn.in/d/84YfzpA", tooltip: "Mouse pad." },
+            { name: "Arm sleeve", image: "arm_sleeve-removebg-preview.png", amazonLink: "https://amzn.in/d/6E2Qm3D", tooltip: "Arm sleeve." }
         ];
 
         function renderPeripherals() {
@@ -685,21 +687,24 @@
             const playOverlay = videoContainer.querySelector('.play-overlay');
             if (!videoSrcFromData || videoSrcFromData.trim() === "" || videoSrcFromData.toLowerCase() === "replace_with_your_youtube_embed_url" || !videoSrcFromData.toLowerCase().startsWith("http")) {
                 console.error(`VIDEO PLAYER ERROR: 'data-video-src' is invalid. Value: "${videoSrcFromData}". Must be valid YouTube EMBED URL.`);
-                if (playOverlay) playOverlay.innerHTML = `<p style="color:white; text-align:center; padding:10px; font-size:0.8rem;">Video link error.<br>Use YouTube EMBED URL.</p>`;
+                if (playOverlay) playOverlay.innerHTML = `<p style=\"color:white; text-align:center; padding:10px; font-size:0.8rem;\">Video link error.<br>Use YouTube EMBED URL.</p>`;
                 return;
             }
-            if (!videoSrcFromData.includes("embed/index.html")) {
+
+            if (!videoSrcFromData.includes("/embed/")) {
                 console.warn(`VIDEO PLAYER WARNING: 'data-video-src' ("${videoSrcFromData}") MUST contain "/embed/" for YouTube videos.`);
-                if (playOverlay) playOverlay.innerHTML = `<p style="color:red; background:rgba(255,255,255,0.1); text-align:center; padding:10px; font-size:0.8rem; border:1px solid red;"><b>URL ERROR:</b> Video URL NOT YouTube EMBED link.<br>Fix 'data-video-src'.</p>`;
+                if (playOverlay) playOverlay.innerHTML = `<p style=\"color:red; background:rgba(255,255,255,0.1); text-align:center; padding:10px; font-size:0.8rem; border:1px solid red;\"><b>URL ERROR:</b> Video URL NOT YouTube EMBED link.<br>Fix 'data-video-src'.</p>`;
             }
+
             if (!thumbnailImg || !playOverlay) { console.error("VIDEO PLAYER ERROR: Thumbnail or Play overlay not found."); return; }
-            videoContainer.addEventListener('click', function loadAndPlayVideo() {
+            function loadAndPlayVideo() {
                 videoContainer.removeEventListener('click', loadAndPlayVideo);
+                if (playOverlay) playOverlay.style.pointerEvents = 'none';
                 const containerComputedStyle = getComputedStyle(videoContainer);
                 const parentWidthPx = containerComputedStyle.width; const parentHeightPx = containerComputedStyle.height;
                 if (!parentWidthPx || parentWidthPx === "0px" || !parentHeightPx || parentHeightPx === "0px") {
                     console.error("VIDEO PLAYER CRITICAL: Parent container 0px dimensions.");
-                    if(playOverlay && !playOverlay.innerHTML.includes("URL ERROR")) playOverlay.innerHTML = `<p style="color:white;">Container size error.</p>`;
+                    if(playOverlay && !playOverlay.innerHTML.includes("URL ERROR")) playOverlay.innerHTML = `<p style=\"color:white;\">Container size error.</p>`;
                     return;
                 }
                 gsap.to([thumbnailImg, playOverlay], {
@@ -712,9 +717,8 @@
                         iframe.style.width = parentWidthPx; iframe.style.height = parentHeightPx;
                         iframe.style.border = 'none';
                         let finalVideoSrc = videoSrcFromData;
-                         if (videoSrcFromData.includes('youtube.com/index.html') || videoSrcFromData.includes('youtu.be/index.html')) { 
-                            finalVideoSrc += (videoSrcFromData.includes('?') ? '&' : '?') + 'autoplay=1';
-                        }
+                        // Always add autoplay=1 for immediate play
+                        finalVideoSrc += (videoSrcFromData.includes('?') ? '&' : '?') + 'autoplay=1';
                         iframe.src = finalVideoSrc;
                         iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
                         iframe.setAttribute('allowfullscreen', '');
@@ -730,7 +734,8 @@
                         });
                     }
                 });
-            });
+            }
+            videoContainer.addEventListener('click', loadAndPlayVideo);
         }
 
         document.addEventListener("DOMContentLoaded", () => {
